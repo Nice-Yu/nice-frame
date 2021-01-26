@@ -16,7 +16,7 @@ class Frame
      */
     public function run()
     {
-        echo __CLASS__ . " 框架入口 <hr/>";
+        ps(__CLASS__ . " 框架入口");
         /** 加载配置 */
         $config = new Config();
         $config->run();
@@ -29,7 +29,7 @@ class Frame
      */
     public static function loader(string $className): bool
     {
-        echo "自动加载:{$className} <hr/>";
+        ps("自动加载:{$className} ");
 
         /** 判断是否已经存在类 */
         if (isset(self::$classMap[$className])) {
@@ -44,7 +44,7 @@ class Frame
 
         /** 判断文件是否存在 */
         if (!is_file($classPath)) {
-            echo "自动加载出错:{$className}不存在此文件 <hr/>";
+            ps("自动加载出错:{$className}不存在此文件");
             return false;
         }
 
