@@ -15,9 +15,11 @@ class Frame
      */
     public function run()
     {
-        echo __CLASS__ . "框架入口 <hr/>";
+        ps(__CLASS__ . "框架入口");
         $config = new Config();
         $config->run();
+        ps($config->config('database'));
+        ps($config->config('app.app_path'));
     }
 
     /**
@@ -27,7 +29,7 @@ class Frame
      */
     public static function loader(string $nameSpace): bool
     {
-        echo "自动载入: {$nameSpace} <hr/>";
+        ps("自动载入: {$nameSpace}");
 
         /** 判断类是否已经引入 */
         if (isset(self::$classMap[$nameSpace])) {
