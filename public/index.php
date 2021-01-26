@@ -12,21 +12,10 @@ if (debug) {
 
 /** 引入文件 */
 include appPath . 'core/Frame.php';
+include appPath . 'core/Func.php';
 
 /** 自动载入 */
 spl_autoload_register('\core\Frame::loader');
 
 /** 启动框架 */
 \core\Frame::run();
-
-function ps($var)
-{
-    ob_start();
-    var_dump($var);
-    $output = preg_replace('/\]\=\>\n(\s+)/m', '] => ', ob_get_clean());
-    if (!extension_loaded('xdebug')) {
-        $output = htmlspecialchars($output, ENT_SUBSTITUTE);
-    }
-    $output = '<pre>' . $output . '</pre>';
-    echo($output);
-}

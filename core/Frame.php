@@ -16,10 +16,11 @@ class Frame
     public function run()
     {
         ps(__CLASS__ . "框架入口");
-        $config = new Config();
-        $config->run();
-        ps($config->config('database'));
-        ps($config->config('app.app_path'));
+
+        /** 载入配置 */
+        (new Config())->run();
+        /** 路由初始化 */
+        (new Route())->run();
     }
 
     /**
