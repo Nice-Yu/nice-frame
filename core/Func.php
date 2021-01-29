@@ -32,3 +32,27 @@ if (!function_exists('config')) {
         return (new \core\Config())->config($name);
     }
 }
+
+if (!function_exists('route')) {
+
+
+    /**
+     * 获取当前控制器和方法名
+     * @param string $name
+     * @return array|string|bool
+     */
+    function route(string $name)
+    {
+        $route = new \core\Route();
+        switch ($name) {
+            case 'action':
+                return $route->action;
+            case 'controller':
+                return $route->controller;
+            case 'all':
+                return [$route->action, $route->controller];
+            default:
+                return false;
+        }
+    }
+}
